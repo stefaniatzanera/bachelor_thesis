@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>VirtualTourGuide</title>
+
+        <meta charset='UTF-8'>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="style/style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/css/datepicker.min.css">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+        <link rel="icon" href="media/images/tour.png" type="image/icon type">
+
+
+        <!--my scripts-->
+        <script src="scripts/changeBackground.js"></script>
+        <script src="scripts/reservationhelper.js"></script>
+        <script src="scripts/calendar.js"></script>
+        <!--scripts-->
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+        <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/js/datepicker.min.js"></script>
+        <script src="scripts/navigation.js"></script>         
+    </head>
+
+    <body>
+        <div class="logo">
+            <label><a href="index.html">Virtual Tour Guide</a></label>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i id="iicon" class="fa fa-bars"></i>
+            </a>
+        </div>
+
+        <nav id="nav" class="nv">
+            <ul>
+                <li><a href="index.html">Home <i class="fa fa-home" aria-hidden="true"></i></a></li>
+                <li class="nav_listitemdrop"><a href="#">Tour<i class="fa fa-street-view" aria-hidden="true"></i> <i class="fa fa-caret-down"></i></a>
+                    <ul>
+                        <li><a href="insidetour.html">Home Tour</a></li>
+                        <li><a href="outsidetour.html">Yard Tour</a></li>
+                    </ul>
+                </li>
+                <li><a class="active" href="reservation.html">Book your ticket <i class="fa fa-ticket"></i></a></li>
+                <li><a href="abouttheauthor.html">About <i class="fa fa-info-circle" aria-hidden="true"></i></a></li>
+            </ul>
+        </nav>
+
+        <br><br>
+
+        <form method="post">
+            <fieldset>
+                <legend>Book your ticket</legend>
+                <div class="team">
+                    <div class="elem-group">
+                        <label for="name">Your name</label>
+                        <input type="text" id="name" name="visitor_name" placeholder=" John Doe " pattern=[A-Z\sa-z]{3,20} required>
+                    </div>
+
+                    <div class="elem-group">
+                        <label for="email">Your e-mail</label>
+                        <input type="email" id="email" name="visitor_email" placeholder=" john.doe@email.com " required>
+                    </div>
+                </div>
+
+                <div class="team">
+                    <div class="elem-group">
+                        <label for="phone">Your phone</label>
+                        <input type="tel" id="phone" name="visitor_phone" placeholder=" 6912345678 " pattern=(\d{3})-?\s?(\d{3})-?\s?(\d{4}) required>
+                    </div>
+
+                    <div class="elem-group">
+                        <label for="adult">Adults</label>
+                        <input type="number" id="adult" name="total_adults" placeholder=" Number of adults " min="1" required>
+                    </div>
+                </div>
+
+                <div class="team">
+                    <div class="elem-group">
+                        <label for="child">Children</label>
+                        <input type="number" id="child" name="total_children" placeholder=" Number of children " min="0" required>
+                    </div>
+
+                    <div class="elem-group">
+                        <label for="date">Visit date: </label>
+                        <input id="checkin-date" type="text" name="checkin" placeholder="Day of visit" required>
+                        <script>fixDate();</script>
+                    </div>
+                </div>
+                
+                <div class="team">
+                    <div class="elem-group">
+                        <label for="hour">Hour</label>
+                        <select id="hour" name="hour" required>
+                            <option value="" disabled="disabled">The hour you want to visit</option>
+                            <option value="10:00">10:00-11:00</option>
+                            <option value="11:00">11:00-12:00</option>
+                            <option value="12:00">12:00-13:00</option>
+                            <option value="14:00">14:00-15:00</option>
+                            <option value="15:00">15:00-16:00</option>
+                            <option value="16:00">16:00-17:00</option>
+                        </select>
+                    </div>
+
+                    <div class="elem-group">
+                        <label for="place-selection">Place</label>
+                        <select id="place-selection" name="place_preference" required>
+                            <option value="" disabled="disabled">The place you want to visit</option>
+                            <option value="outside">Outside</option>
+                            <option value="inside">Inside</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="book">
+                    <input type="button" value=" Book your visit " onclick="sendEmail()">
+                </div>
+                <br>
+            </fieldset>
+        </form>
+
+        <br><br>
+        
+        <hr>
+        <footer>
+            <br>
+            <div class="social">
+                <a href="https://github.com/stefaniatzanera"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a href="https://www.linkedin.com/in/stefania-tzanera-612331226/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                <a href="mailto:stefaniatz99@gmail.com"><i class="fa fa-envelope"></i></a>
+            </div>
+            <br>
+            <div class="rgh">
+			    Copyright &copy; <strong>Stefania Tzanera</strong> 2021-2022
+            </div>
+            <br>
+		</footer>
+    </body>
+</html>

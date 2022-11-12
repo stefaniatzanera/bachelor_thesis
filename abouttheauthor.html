@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>VirtualTourGuide</title>
+
+        <meta charset='UTF-8'>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="style/style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" href="media/images/tour.png" type="image/icon type">
+
+        <script src="scripts/changeBackground.js"></script> 
+        <script src="scripts/navigation.js"></script>   
+    </head>
+
+    <body>
+        <div class="logo">
+            <label><a href="index.html">Virtual Tour Guide</a></label>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i id="iicon" class="fa fa-bars"></i>
+            </a>
+        </div>
+
+        <nav id="nav" class="nv">
+            <ul>
+                <li><a href="index.html">Home <i class="fa fa-home" aria-hidden="true"></i></a></li>
+                <li class="nav_listitemdrop"><a href="#">Tour<i class="fa fa-street-view" aria-hidden="true"></i> <i class="fa fa-caret-down"></i></a>
+                    <ul>
+                        <li><a href="insidetour.html">Home Tour</a></li>
+                        <li><a href="outsidetour.html">Yard Tour</a></li>
+                    </ul>
+                </li>
+                <li><a href="reservation.html">Book your ticket <i class="fa fa-ticket"></i></a></li>
+                <li><a class="active" href="abouttheauthor.html">About <i class="fa fa-info-circle" aria-hidden="true"></i></a></li>
+            </ul>
+        </nav>
+
+        <br><br>
+
+        <div class="container-3">    
+            <div class="gallery">
+                <figure class="author">
+                    <img src="media/images/author.jpg">
+                </figure>
+            </div>
+
+            <br>
+
+            <div class="abouttheauthor">
+                <p> &nbsp&nbsp&nbspHello! My name is Stefania Tzanera, I am 23 years old and I am half Greek and half Bulgarian.
+                    I live in Nikaia, Piraeus, and during the past four years, I study in the city of Tripolis.
+                    I am a student in the Department of Informatics and Telecommunications at the University 
+                    of Peloponnese, and this web page is part of my thesis. I would love to get involved with web applications and design, thus, I chose 
+                    Mr. Tselikas as my supervisor, as he is quite familiar with the field and can guide me properly.<br>
+                </p>
+            </div>   
+        </div>
+
+        <div class="container-3">
+            <div class="abouttheapp">
+                <p>
+                    &nbsp&nbsp&nbspI was asked to implement a virtual tour guide of a place, so I chose my house for this purpose.
+                    The goal of this work is to provide the user with a tool, such that he/she is able to be guided around an area and interact 
+                    with objects in various ways, thus enhancing his overall virtual tour guide experience.
+                </p>
+            </div>
+        </div>
+
+        <br>
+
+        <hr>
+        <footer>
+            <br>
+            <div class="social">
+                <a href="https://github.com/stefaniatzanera"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a href="https://www.linkedin.com/in/stefania-tzanera-612331226/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                <a href="mailto:stefaniatz99@gmail.com"><i class="fa fa-envelope"></i></a>
+            </div>
+            <br>
+            <div class="rgh">
+			    Copyright &copy; <strong>Stefania Tzanera</strong> 2021-2022
+            </div>
+            <br>
+		</footer>
+    </body>
+</html>

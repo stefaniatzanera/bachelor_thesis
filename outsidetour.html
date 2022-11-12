@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>VirtualTourGuide</title>
+
+        <meta charset='UTF-8'>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="style/style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" href="media/images/tour.png" type="image/icon type">
+
+        <script src="scripts/changeBackground.js"></script>
+        <script src="scripts/navigation.js"></script>    
+    </head>
+
+    <body>
+        <div class="logo">
+            <label><a href="index.html">Virtual Tour Guide</a></label>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i id="iicon" class="fa fa-bars"></i>
+            </a>
+        </div>
+
+        <nav id="nav" class="nv">
+            <ul>
+                <li><a href="index.html">Home <i class="fa fa-home" aria-hidden="true"></i></a></li>
+                <li class="nav_listitemdrop"><a href="#">Tour<i class="fa fa-street-view" aria-hidden="true"></i> <i class="fa fa-caret-down"></i></a>
+                    <ul>
+                        <li><a href="insidetour.html">Home Tour</a></li>
+                        <li><a class="active" href="outsidetour.html">Yard Tour</a></li>
+                    </ul>
+                </li>
+                <li><a href="reservation.html">Book your ticket <i class="fa fa-ticket"></i></a></li>
+                <li><a href="abouttheauthor.html">About <i class="fa fa-info-circle" aria-hidden="true"></i></a></li>
+            </ul>
+        </nav>
+        
+
+        <br><br><br>
+
+        <div class="tour">
+            <iframe src="tour/outside/index.html" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+        </div>
+
+        <br><br>
+        <hr>
+        <footer>
+            <br>
+            <div class="social">
+                <a href="https://github.com/stefaniatzanera"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a href="https://www.linkedin.com/in/stefania-tzanera-612331226/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                <a href="mailto:stefaniatz99@gmail.com"><i class="fa fa-envelope"></i></a>
+            </div>
+            <br>
+            <div class="rgh">
+			    Copyright &copy; <strong>Stefania Tzanera</strong> 2021-2022
+            </div>
+            <br>
+		</footer>
+    </body>
+</html>

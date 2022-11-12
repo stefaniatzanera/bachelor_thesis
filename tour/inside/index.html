@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!--projecttitle--><title>insidetour</title><!--projecttitle-end-->
+		<!--projectdescription--><meta name="description" content="HomeTour"><!--projectdescription-end-->
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width, shrink-to-fit=no">
+		
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		
+		<!-- Insert this line above script imports  -->
+		<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+		
+		<script src="imagedata.js"></script>
+		<script src="jquery.js"></script>
+		<script src="three.min.js"></script>
+		<script src="panolens.min.js"></script>
+		
+		<!-- Insert this line after script imports -->
+		<script>if (window.module) module = window.module;</script>
+		
+		<style>
+		
+			
+						
+			/* SCROLLBAR STYLING */
+			/* width */
+			::-webkit-scrollbar {
+				width: 0.25em;
+				height: 0.25em;
+			}
+			/* Track */
+			::-webkit-scrollbar-track {
+				background: #2c3643; 
+			}
+			/* Handle */
+			::-webkit-scrollbar-thumb {
+				background: #0d9e59; 
+				transition: background .5s;
+			}
+			/* Handle on hover */
+			::-webkit-scrollbar-thumb:hover {
+				background: #00e075; 
+			}
+
+
+			html, body {
+				margin: 0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				background-color: #000;
+				color: black;
+			}
+
+			a:link, a:visited{
+				color: #bdc3c7;	
+			}
+
+			.fullwrapper{
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: black;
+			}
+			
+			#container {
+                width: 100%;
+                height: 100%;
+            }
+			
+			#tmp{
+				position: fixed;
+				top: 0;
+				left: 0; 
+				right: 0;
+				bottom: 0;
+				padding: 3em;
+				background-color: rgba(0,0,0,.5);
+				backdrop-filter: blur(5px);
+				display: none;
+			}
+		</style>
+	</head>
+	<body id="body">
+	    <div id="container" style="color: black;"></div>
+    	
+		
+		
+		<!--customhtml--><div class='customhotspot' id='PANO_20221030_194936_3'><div onclick='chclickinfospotPANO_20221030_194936_32();' id='infospotPANO_20221030_194936_32' style='position: fixed; top: 0; left: 0; cursor: pointer;'><img src='customhotspots/infowhite.png' style='width: 64px; height: 64px;'></div></div><div class='customhotspot' id='PANO_20221030_193651_2'><div onclick='chclickinfospotPANO_20221030_193651_21();' id='infospotPANO_20221030_193651_21' style='position: fixed; top: 0; left: 0; cursor: pointer;'><img src='customhotspots/infowhite.png' style='width: 64px; height: 64px;'></div><div onclick='chclickinfospotPANO_20221030_193651_22();' id='infospotPANO_20221030_193651_22' style='position: fixed; top: 0; left: 0; cursor: pointer;'><img src='customhotspots/infowhite.png' style='width: 64px; height: 64px;'></div></div><div class='customhotspot' id='PANO_20221030_200931_11'></div><div class='customhotspot' id='PANO_20221030_203107_21'><div onclick='chclickinfospotPANO_20221030_203107_212();' id='infospotPANO_20221030_203107_212' style='position: fixed; top: 0; left: 0; cursor: pointer;'><img src='customhotspots/infowhite.png' style='width: 64px; height: 64px;'></div><div onclick='chclickinfospotPANO_20221030_203107_213();' id='infospotPANO_20221030_203107_213' style='position: fixed; top: 0; left: 0; cursor: pointer;'><img src='customhotspots/infowhite.png' style='width: 64px; height: 64px;'></div></div><div class='customhotspot' id='PANO_20221030_203107_24'></div><div class='customhotspot' id='PANO_20221030_203404_25'><div onclick='chclickinfospotPANO_20221030_203404_253();' id='infospotPANO_20221030_203404_253' style='position: fixed; top: 0; left: 0; cursor: pointer;'><img src='customhotspots/infowhite.png' style='width: 64px; height: 64px;'></div></div><div class='customhotspot' id='PANO_20221030_204107_1'><div onclick='chclickinfospotPANO_20221030_204107_13();' id='infospotPANO_20221030_204107_13' style='position: fixed; top: 0; left: 0; cursor: pointer;'><img src='customhotspots/infowhite.png' style='width: 64px; height: 64px;'></div></div><div class='customhotspot' id='PANO_20221030_192413_32'><div onclick='chclickinfospotPANO_20221030_192413_322();' id='infospotPANO_20221030_192413_322' style='position: fixed; top: 0; left: 0; cursor: pointer;'><img src='customhotspots/infowhite.png' style='width: 64px; height: 64px;'></div><div onclick='chclickinfospotPANO_20221030_192413_323();' id='infospotPANO_20221030_192413_323' style='position: fixed; top: 0; left: 0; cursor: pointer;'><img src='customhotspots/infowhite.png' style='width: 64px; height: 64px;'></div></div><!--customhtml-end-->
+		
+		<div id="tmp">
+			<div style="width: 100%; height: 100%; overflow: hidden; overflow-y: auto; box-sizing: border-box; position: relative;" id="tmpcontent"></div>
+			<div class="mediaclosebutton" onclick="hideTemp()"><i class="fa fa-times-circle"></i></div>
+		</div>
+
+
+		<div id="loading" class="fullwrapper" style="display: table; width: 100%; height: 100%;">
+    		<div style="display: table-cell; vertical-align: middle; text-align: center; color: white; font-size: 30px; padding: 50px;">
+    			<!--loadingtext-->Scene Loading ...<!--loadingtext-end-->
+    		</div>
+    	</div>
+		
+    	<script>
+			
+            var container = document.querySelector( '#container' );
+			/*panolens*/
+
+var viewer = new PANOLENS.Viewer( { container: container , controlBar: true,  output: 'console' , autoHideInfospot: false, } );
+
+/*panolens-end*/
+			
+			viewer.addUpdateCallback(function(){});
+			
+			/*panoramas*/
+var PANO_20221030_194936_3 = new PANOLENS.ImagePanorama( "panoramas/PANO_20221030_194936_3.jpg" );
+			PANO_20221030_194936_3.addEventListener('progress', function(e){
+				$("#loading").show();
+			});
+			PANO_20221030_194936_3.addEventListener('load', function(e){
+				$("#loading").fadeOut();
+			});
+			PANO_20221030_194936_3.addEventListener('click', function(e){
+			});
+
+var infospotPANO_20221030_194936_30 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20221030_194936_30.position.set( 3947.01, -2280.57, -2040.08 );
+					PANO_20221030_194936_3.add(infospotPANO_20221030_194936_30);
+infospotPANO_20221030_194936_30.addEventListener('click', function(){
+ChangePanorama('PANO_20221030_192413_32');
+});
+var infospotPANO_20221030_194936_31 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20221030_194936_31.position.set( -3775.38, -3168.43, -819.57 );
+					PANO_20221030_194936_3.add(infospotPANO_20221030_194936_31);
+infospotPANO_20221030_194936_31.addEventListener('click', function(){
+ChangePanorama('PANO_20221030_200931_11');
+});
+var infospotPANO_20221030_194936_32 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotPANO_20221030_194936_32.position.set( 3858.45, -2081.80, 2386.13 );
+					infospotPANO_20221030_194936_32.visible = false;
+					PANO_20221030_194936_3.add(infospotPANO_20221030_194936_32);
+infospotPANO_20221030_194936_32.addEventListener('click', function(){
+showMedia(1, 'images/PXL_20221031_192004065.jpg');
+});
+viewer.add( PANO_20221030_194936_3 );
+var PANO_20221030_193651_2 = new PANOLENS.ImagePanorama( "panoramas/PANO_20221030_193651_2.jpg" );
+			PANO_20221030_193651_2.addEventListener('progress', function(e){
+				$("#loading").show();
+			});
+			PANO_20221030_193651_2.addEventListener('load', function(e){
+				$("#loading").fadeOut();
+			});
+			PANO_20221030_193651_2.addEventListener('click', function(e){
+			});
+
+var infospotPANO_20221030_193651_20 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20221030_193651_20.position.set( 4406.00, -2327.63, -319.26 );
+					PANO_20221030_193651_2.add(infospotPANO_20221030_193651_20);
+infospotPANO_20221030_193651_20.addEventListener('click', function(){
+ChangePanorama('PANO_20221030_192413_32');
+});
+var infospotPANO_20221030_193651_21 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotPANO_20221030_193651_21.position.set( 661.39, -966.87, -4851.25 );
+					infospotPANO_20221030_193651_21.visible = false;
+					PANO_20221030_193651_2.add(infospotPANO_20221030_193651_21);
+infospotPANO_20221030_193651_21.addEventListener('click', function(){
+showMedia(1, 'images/PXL_20221031_192220967.jpg');
+});
+var infospotPANO_20221030_193651_22 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotPANO_20221030_193651_22.position.set( 853.31, 26.68, 4919.18 );
+					infospotPANO_20221030_193651_22.visible = false;
+					PANO_20221030_193651_2.add(infospotPANO_20221030_193651_22);
+infospotPANO_20221030_193651_22.addEventListener('click', function(){
+showMedia(1, 'images/PXL_20221031_192112896.jpg');
+});
+viewer.add( PANO_20221030_193651_2 );
+var PANO_20221030_200931_11 = new PANOLENS.ImagePanorama( "panoramas/PANO_20221030_200931_11.jpg" );
+			PANO_20221030_200931_11.addEventListener('progress', function(e){
+				$("#loading").show();
+			});
+			PANO_20221030_200931_11.addEventListener('load', function(e){
+				$("#loading").fadeOut();
+			});
+			PANO_20221030_200931_11.addEventListener('click', function(e){
+			});
+
+var infospotPANO_20221030_200931_110 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20221030_200931_110.position.set( 2558.67, -4164.77, 1024.91 );
+					PANO_20221030_200931_11.add(infospotPANO_20221030_200931_110);
+infospotPANO_20221030_200931_110.addEventListener('click', function(){
+ChangePanorama('PANO_20221030_194936_3');
+});
+var infospotPANO_20221030_200931_111 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20221030_200931_111.position.set( -4636.67, -697.21, -1710.57 );
+					PANO_20221030_200931_11.add(infospotPANO_20221030_200931_111);
+infospotPANO_20221030_200931_111.addEventListener('click', function(){
+ChangePanorama('PANO_20221030_203107_24');
+});
+viewer.add( PANO_20221030_200931_11 );
+var PANO_20221030_203107_21 = new PANOLENS.ImagePanorama( "panoramas/PANO_20221030_203107_21.jpg" );
+			PANO_20221030_203107_21.addEventListener('progress', function(e){
+				$("#loading").show();
+			});
+			PANO_20221030_203107_21.addEventListener('load', function(e){
+				$("#loading").fadeOut();
+			});
+			PANO_20221030_203107_21.addEventListener('click', function(e){
+			});
+
+var infospotPANO_20221030_203107_210 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20221030_203107_210.position.set( 3487.97, -2752.24, 2274.63 );
+					PANO_20221030_203107_21.add(infospotPANO_20221030_203107_210);
+infospotPANO_20221030_203107_210.addEventListener('click', function(){
+ChangePanorama('PANO_20221030_203107_24');
+});
+var infospotPANO_20221030_203107_211 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20221030_203107_211.position.set( -2757.66, -2461.02, 3354.10 );
+					PANO_20221030_203107_21.add(infospotPANO_20221030_203107_211);
+infospotPANO_20221030_203107_211.addEventListener('click', function(){
+ChangePanorama('PANO_20221030_204107_1');
+});
+var infospotPANO_20221030_203107_212 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotPANO_20221030_203107_212.position.set( -1716.15, -464.16, -4664.03 );
+					infospotPANO_20221030_203107_212.visible = false;
+					PANO_20221030_203107_21.add(infospotPANO_20221030_203107_212);
+infospotPANO_20221030_203107_212.addEventListener('click', function(){
+showMedia(1, 'images/PXL_20221031_191934930.jpg');
+});
+var infospotPANO_20221030_203107_213 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotPANO_20221030_203107_213.position.set( -2577.08, -1511.75, -3999.87 );
+					infospotPANO_20221030_203107_213.visible = false;
+					PANO_20221030_203107_21.add(infospotPANO_20221030_203107_213);
+infospotPANO_20221030_203107_213.addEventListener('click', function(){
+showMedia(1, 'images/PXL_20221031_193502864.jpg');
+});
+viewer.add( PANO_20221030_203107_21 );
+var PANO_20221030_203107_24 = new PANOLENS.ImagePanorama( "panoramas/PANO_20221030_203107_24.jpg" );
+			PANO_20221030_203107_24.addEventListener('progress', function(e){
+				$("#loading").show();
+			});
+			PANO_20221030_203107_24.addEventListener('load', function(e){
+				$("#loading").fadeOut();
+			});
+			PANO_20221030_203107_24.addEventListener('click', function(e){
+			});
+
+var infospotPANO_20221030_203107_240 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20221030_203107_240.position.set( 3899.09, -2361.91, -2033.93 );
+					PANO_20221030_203107_24.add(infospotPANO_20221030_203107_240);
+infospotPANO_20221030_203107_240.addEventListener('click', function(){
+ChangePanorama('PANO_20221030_203404_25');
+});
+var infospotPANO_20221030_203107_241 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20221030_203107_241.position.set( 3237.53, -2204.80, 3096.63 );
+					PANO_20221030_203107_24.add(infospotPANO_20221030_203107_241);
+infospotPANO_20221030_203107_241.addEventListener('click', function(){
+ChangePanorama('PANO_20221030_203107_21');
+});
+var infospotPANO_20221030_203107_242 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20221030_203107_242.position.set( -2793.82, -3973.94, 1162.97 );
+					PANO_20221030_203107_24.add(infospotPANO_20221030_203107_242);
+infospotPANO_20221030_203107_242.addEventListener('click', function(){
+ChangePanorama('PANO_20221030_200931_11');
+});
+viewer.add( PANO_20221030_203107_24 );
+var PANO_20221030_203404_25 = new PANOLENS.ImagePanorama( "panoramas/PANO_20221030_203404_25.jpg" );
+			PANO_20221030_203404_25.addEventListener('progress', function(e){
+				$("#loading").show();
+			});
+			PANO_20221030_203404_25.addEventListener('load', function(e){
+				$("#loading").fadeOut();
+			});
+			PANO_20221030_203404_25.addEventListener('click', function(e){
+			});
+
+var infospotPANO_20221030_203404_250 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20221030_203404_250.position.set( -753.74, -2547.89, 4227.63 );
+					PANO_20221030_203404_25.add(infospotPANO_20221030_203404_250);
+infospotPANO_20221030_203404_250.addEventListener('click', function(){
+ChangePanorama('PANO_20221030_203107_24');
+});
+var infospotPANO_20221030_203404_251 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20221030_203404_251.position.set( 3289.62, -2072.07, 3130.94 );
+					PANO_20221030_203404_25.add(infospotPANO_20221030_203404_251);
+infospotPANO_20221030_203404_251.addEventListener('click', function(){
+ChangePanorama('PANO_20221030_203107_21');
+});
+var infospotPANO_20221030_203404_252 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20221030_203404_252.position.set( 4279.75, -2073.36, -1517.84 );
+					PANO_20221030_203404_25.add(infospotPANO_20221030_203404_252);
+infospotPANO_20221030_203404_252.addEventListener('click', function(){
+ChangePanorama('PANO_20221030_204107_1');
+});
+var infospotPANO_20221030_203404_253 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotPANO_20221030_203404_253.position.set( -474.13, -3132.51, -3860.50 );
+					infospotPANO_20221030_203404_253.visible = false;
+					PANO_20221030_203404_25.add(infospotPANO_20221030_203404_253);
+infospotPANO_20221030_203404_253.addEventListener('click', function(){
+showMedia(1, 'images/PXL_20221031_193242169.jpg');
+});
+viewer.add( PANO_20221030_203404_25 );
+var PANO_20221030_204107_1 = new PANOLENS.ImagePanorama( "panoramas/PANO_20221030_204107_1.jpg" );
+			PANO_20221030_204107_1.addEventListener('progress', function(e){
+				$("#loading").show();
+			});
+			PANO_20221030_204107_1.addEventListener('load', function(e){
+				$("#loading").fadeOut();
+			});
+			PANO_20221030_204107_1.addEventListener('click', function(e){
+			});
+
+var infospotPANO_20221030_204107_10 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20221030_204107_10.position.set( 3016.84, -2665.96, -2953.52 );
+					PANO_20221030_204107_1.add(infospotPANO_20221030_204107_10);
+infospotPANO_20221030_204107_10.addEventListener('click', function(){
+ChangePanorama('PANO_20221030_203107_21');
+});
+var infospotPANO_20221030_204107_11 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20221030_204107_11.position.set( 4557.48, -2018.58, -256.44 );
+					PANO_20221030_204107_1.add(infospotPANO_20221030_204107_11);
+infospotPANO_20221030_204107_11.addEventListener('click', function(){
+ChangePanorama('PANO_20221030_203107_24');
+});
+var infospotPANO_20221030_204107_12 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20221030_204107_12.position.set( 3378.75, -2284.29, 2884.27 );
+					PANO_20221030_204107_1.add(infospotPANO_20221030_204107_12);
+infospotPANO_20221030_204107_12.addEventListener('click', function(){
+ChangePanorama('PANO_20221030_203404_25');
+});
+var infospotPANO_20221030_204107_13 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotPANO_20221030_204107_13.position.set( 4262.86, -1632.76, -2022.58 );
+					infospotPANO_20221030_204107_13.visible = false;
+					PANO_20221030_204107_1.add(infospotPANO_20221030_204107_13);
+infospotPANO_20221030_204107_13.addEventListener('click', function(){
+showMedia(1, 'images/photo_2022-10-31_19-37-44.jpg');
+});
+viewer.add( PANO_20221030_204107_1 );
+var PANO_20221030_192413_32 = new PANOLENS.ImagePanorama( "panoramas/PANO_20221030_192413_32.jpg" );
+			PANO_20221030_192413_32.addEventListener('progress', function(e){
+				$("#loading").show();
+			});
+			PANO_20221030_192413_32.addEventListener('load', function(e){
+				$("#loading").fadeOut();
+			});
+			PANO_20221030_192413_32.addEventListener('click', function(e){
+			});
+
+var infospotPANO_20221030_192413_320 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20221030_192413_320.position.set( 4625.13, -1887.58, 72.53 );
+					PANO_20221030_192413_32.add(infospotPANO_20221030_192413_320);
+infospotPANO_20221030_192413_320.addEventListener('click', function(){
+ChangePanorama('PANO_20221030_194936_3');
+});
+var infospotPANO_20221030_192413_321 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20221030_192413_321.position.set( -4277.43, -2584.76, 24.83 );
+					PANO_20221030_192413_32.add(infospotPANO_20221030_192413_321);
+infospotPANO_20221030_192413_321.addEventListener('click', function(){
+ChangePanorama('PANO_20221030_193651_2');
+});
+var infospotPANO_20221030_192413_322 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotPANO_20221030_192413_322.position.set( 3410.12, 1106.92, -3473.10 );
+					infospotPANO_20221030_192413_322.visible = false;
+					PANO_20221030_192413_32.add(infospotPANO_20221030_192413_322);
+infospotPANO_20221030_192413_322.addEventListener('click', function(){
+showMedia(1, 'images/PXL_20221031_192037830.jpg');
+});
+var infospotPANO_20221030_192413_323 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotPANO_20221030_192413_323.position.set( -490.44, -2367.42, 4371.52 );
+					infospotPANO_20221030_192413_323.visible = false;
+					PANO_20221030_192413_32.add(infospotPANO_20221030_192413_323);
+infospotPANO_20221030_192413_323.addEventListener('click', function(){
+showMedia(1, 'images/PXL_20221031_192156974.jpg');
+});
+viewer.add( PANO_20221030_192413_32 );
+$(document).ready(function(){ ChangePanorama('PANO_20221030_194936_3 '); });
+
+/*panoramas-end*/
+            
+			
+			function hideTemp(){
+				$("#tmp").fadeOut();
+				setTimeout(function(){
+					$("#tmpcontent").html("");
+				},1000);
+			}
+			
+			function showMedia(type, content){
+				switch(type){
+					case 1 :
+						//Image
+						$("#tmpcontent").html("<img src='"+content+"' style='width: 100%;height:100%;display:inline-block;'>");
+						$("#tmp").fadeIn();
+						break;
+					case 2 :
+						//Video
+						$("#tmpcontent").html("<video id='webvideo' controls autoplay style='width: 50%; height: 100%;'><source src='" +content+ "' type='video/mp4'> Your browser does not support the video tag. </video>");
+						$("#tmp").fadeIn();
+						break;
+					case 3 :
+						//Audio
+						$("#tmpcontent").html("<audio controls style='width: 40%;'><source src='"+content+"' type='audio/ogg'>Your browser does not support the audio tag.</audio>");
+						$("#tmp").fadeIn();
+						break;
+					case 4 :
+						//PDF
+						$("#tmpcontent").html("<iframe src='pdfjs/web/viewer.html?file=../../"+content+"' style='width: 100%; height: 99%;'></iframe>");
+						$("#tmp").fadeIn();
+						break;
+				}
+			}
+			
+			
+			
+			//Update Callback
+			viewer.addUpdateCallback(function(){
+				
+				/*viewerupdatecallback*/
+if(viewer.panorama == PANO_20221030_194936_3){
+ShowMyInfospot(infospotPANO_20221030_194936_32, 'infospotPANO_20221030_194936_32');
+}
+
+if(viewer.panorama == PANO_20221030_193651_2){
+ShowMyInfospot(infospotPANO_20221030_193651_21, 'infospotPANO_20221030_193651_21');
+ShowMyInfospot(infospotPANO_20221030_193651_22, 'infospotPANO_20221030_193651_22');
+}
+
+if(viewer.panorama == PANO_20221030_200931_11){
+}
+
+if(viewer.panorama == PANO_20221030_203107_21){
+ShowMyInfospot(infospotPANO_20221030_203107_212, 'infospotPANO_20221030_203107_212');
+ShowMyInfospot(infospotPANO_20221030_203107_213, 'infospotPANO_20221030_203107_213');
+}
+
+if(viewer.panorama == PANO_20221030_203107_24){
+}
+
+if(viewer.panorama == PANO_20221030_203404_25){
+ShowMyInfospot(infospotPANO_20221030_203404_253, 'infospotPANO_20221030_203404_253');
+}
+
+if(viewer.panorama == PANO_20221030_204107_1){
+ShowMyInfospot(infospotPANO_20221030_204107_13, 'infospotPANO_20221030_204107_13');
+}
+
+if(viewer.panorama == PANO_20221030_192413_32){
+ShowMyInfospot(infospotPANO_20221030_192413_322, 'infospotPANO_20221030_192413_322');
+ShowMyInfospot(infospotPANO_20221030_192413_323, 'infospotPANO_20221030_192413_323');
+}
+/*viewerupdatecallback-end*/
+				
+				
+			});
+			
+			
+			
+			var hotspotsvisible = true;
+			function ShowMyInfospot(hs, elid){
+				var thehs = toScreenPosition(hs);
+				if(thehs.z < 1){
+					$("#" + elid).css({
+						"top" : (thehs.y - ($("#" + elid).height()/2)) + "px",
+						"left" : (thehs.x - ($("#" + elid).width()/2)) + "px",
+					});
+					if(hotspotsvisible)
+						$("#" + elid).show();
+				}else{
+					$("#" + elid).hide();
+				}
+				
+			}
+			
+			function toScreenPosition(obj)
+			{
+				var vector = new THREE.Vector3();
+				var widthHalf = 0.5 * innerWidth;
+				var heightHalf = 0.5 * innerHeight;
+				
+				//obj.updateMatrixWorld();				
+				vector.setFromMatrixPosition(obj.matrixWorld);
+				
+				
+				vector.project(viewer.camera);
+
+				vector.x = ( vector.x * widthHalf ) + widthHalf;
+				vector.y = - ( vector.y * heightHalf ) + heightHalf;
+
+				
+				return { 
+					x: vector.x,
+					y: vector.y,
+					z: vector.z,
+				};
+
+			};
+			
+			var currentPanorama;
+			function ChangePanorama(panorama){
+				currentPanorama = panorama;
+				HideInfospots(); 
+				//$("#loading").fadeIn();
+				//$(".customhotspot").fadeOut();
+				setTimeout(function(){
+					viewer.setPanorama(window[panorama]);
+				}, 500);
+				setTimeout(function(){
+					$("#" + panorama).fadeIn();
+				}, 1500);
+				
+			}
+			
+			function HideInfospots(){
+				$(".customhotspot").fadeOut();
+			}
+
+			/*customjs*/
+function chclickinfospotPANO_20221030_194936_32(){ 
+showMedia(1, 'images/PXL_20221031_192004065.jpg');
+}
+
+function chclickinfospotPANO_20221030_193651_21(){ 
+showMedia(1, 'images/PXL_20221031_192220967.jpg');
+}
+
+function chclickinfospotPANO_20221030_193651_22(){ 
+showMedia(1, 'images/PXL_20221031_192112896.jpg');
+}
+
+function chclickinfospotPANO_20221030_203107_212(){ 
+showMedia(1, 'images/PXL_20221031_191934930.jpg');
+}
+
+function chclickinfospotPANO_20221030_203107_213(){ 
+showMedia(1, 'images/PXL_20221031_193502864.jpg');
+}
+
+function chclickinfospotPANO_20221030_203404_253(){ 
+showMedia(1, 'images/PXL_20221031_193242169.jpg');
+}
+
+function chclickinfospotPANO_20221030_204107_13(){ 
+showMedia(1, 'images/photo_2022-10-31_19-37-44.jpg');
+}
+
+function chclickinfospotPANO_20221030_192413_322(){ 
+showMedia(1, 'images/PXL_20221031_192037830.jpg');
+}
+
+function chclickinfospotPANO_20221030_192413_323(){ 
+showMedia(1, 'images/PXL_20221031_192156974.jpg');
+}
+/*customjs-end*/
+        </script>
+	</body>
+</html>

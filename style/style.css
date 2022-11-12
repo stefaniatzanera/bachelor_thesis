@@ -1,0 +1,543 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Helvetica;
+    background-color: #B9D9EB;
+    color: #002244;
+    border: 2px solid #004080;
+}
+
+/*----------------------------------------NAVIGATION----------------------------------------*/
+                                            /*~~~~~~~~~LOGO~~~~~~~~~*/
+.logo{
+    padding: 10px;
+    width:100%;
+    cursor:pointer;
+    text-align: center;
+}
+
+.logo label a{
+    color: #002244;
+    font-size: 50px;
+    font-weight: bold;
+    font-style: italic;
+    font-family: system-ui;
+}
+
+.logo a.active{
+    color:#002244;
+}
+
+.logo a:hover{
+    color:none;
+}
+                                        /*~~~~~~~~~NAVIGATION~~~~~~~~~*/
+nav{
+  background: #002244;
+  width: 100%;
+  height: 70px;
+  position: relative;
+  z-index: 9999999;
+}
+
+nav ul{
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+nav ul li{
+  width:20%;
+}
+
+nav ul li > ul{
+    display: none;
+    flex-direction: column;
+}
+
+nav ul li > ul li {
+    width:100%;
+}
+
+nav ul li:hover > ul {
+    display: flex;
+}
+
+nav a{
+    display: block;
+    background: #002244;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 0px;
+    padding-right: 0px;
+    text-decoration: none;
+    text-align: center;
+    color:#B9D9EB;
+    line-height: 35px;
+    font-size: 22px;
+    height: 62px;
+    font-family: system-ui;
+}
+
+nav a:hover{
+    padding: 17.8px;
+    font-weight: bold;
+    color: #1a8cff;
+}
+
+nav a.active{
+    color:#0059b3;
+}
+
+nav .nav_listitemdrop li > a{
+    background: #002244;
+    color: #B9D9EB;
+}
+
+nav .nav_listitemdrop li > a:hover{
+    color: #1a8cff;
+    font-weight: bold;
+}
+
+nav .nav_listitemdrop li > a.active{
+    color:#0059b3;
+}
+
+.logo .icon{
+    display: none;
+}
+
+/*------------------------------------------CONTAINERS------------------------------------------*/
+.container-1, .container-2{
+    display: flex;
+    flex-direction: row;
+    border:2px solid #004080;
+    border-radius: 10px;
+    margin:40px;
+    object-fit: contain;
+    contain: content;
+}
+
+.container-3{
+    display: flex;
+    flex-direction: row;
+    border:2px solid #004080;
+    align-items: center;
+    border-radius: 10px;
+    margin:10px 80px;
+    object-fit: contain;
+    contain: content;
+}
+
+.container-1 .txt-1,.container-2 .txt-2{
+    margin: 40px;
+    padding: 4px;
+    align-items: center;
+    text-align: justify; 
+    justify-content: center; 
+    flex-direction: column;
+    display: flex;
+    font-size: 20px;
+    font-family: system-ui;
+}
+
+.gal, #vid{
+    width: 600px; 
+    height: 400px; 
+    align-items: center;
+    border-radius: 10px;
+}
+
+.container-1 .gallery, .container-2 .video-1{
+    align-items: center; 
+    justify-content: center; 
+    flex-direction: column;
+    display: flex;
+    margin: 40px;
+    padding: 4px;   
+}
+
+.container-1 .gallery figure,.container-2 .video-1 figure{
+    width: 600px;
+}
+
+.container-1 .gallery figcaption,.container-2 .video-1 figcaption{
+    text-align: center;
+    font-style: italic;
+    font-family: cursive;
+}
+
+.container-3 .abouttheauthor,.container-3 .abouttheapp{
+    margin: 40px;
+    padding: 4px;
+    align-items: center;
+    text-align: justify; 
+    justify-content: center; 
+    flex-direction: column;
+    display: flex;
+    font-size: 20px;
+    font-family: system-ui;
+}
+
+.tour{
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+}
+/*----------------------------------------IMAGES-VIDEOS----------------------------------------*/
+.container-1 .gallery figure img #gal.gal{
+    width: 400px;
+    height: 300px;
+    margin: 0 auto;
+    transition: 0.1s;
+    background: url(media/images/1.jpg);
+}
+
+.container-3 .gallery figure.author img{
+    width: 300px;
+    height: 350px;
+    margin:20px;
+    border-radius: 10px;
+}
+
+iframe{
+    display: flex;
+    width:1010px;
+    height:600px;
+}
+
+/*----------------------------------------FORM(reservation)------------------------------------------------*/
+form{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    color: #002244;
+    font-family: system-ui;
+}
+
+fieldset{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: center;
+    width: 50%;
+    border-color: #002244;
+    border-radius: 10px;
+}
+
+fieldset legend{
+    color: #002244;
+    justify-content: flex-start;
+    font-weight: bold;
+    font-style: italic;
+    border-bottom: 2px solid #004080;
+}
+
+.team{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.elem-group{
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    margin:4px;
+    align-items: center;
+}
+
+.elem-group label{
+    font-size: 24px;
+    font-family: system-ui;
+    
+}
+
+.elem-group input[type=text], input[type=email], input[type=tel], input[type=number],select{
+    padding: 10px;
+    border: 2px solid #004080;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin: 8px;
+    font-family: sustem-ui;
+    color: #002244;
+    width: 200px;
+    margin: 2px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+select{
+    margin: 0px;
+}
+
+.book{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    margin:14px;
+    padding: 4px;
+}
+
+.book input[type=button]{
+    background-color: #002244;
+    border: none;
+    color: #B9D9EB;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
+    font-family: sustem-ui;
+}
+
+/*----------------------------------------FOOTER*----------------------------------------*/
+.social a{
+    font-size:x-large;
+    color:#B9D9EB;
+    padding: 10px;
+}
+
+footer{
+    font-size: 16px;
+	text-align: center;
+    width: 100%;
+    background-color: #002244;
+    color: #B9D9EB;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+hr{
+    color:#004080;
+}
+/*MEDIA QUERIES*/
+@media screen and (max-width: 1000px){
+
+    /*NAVIGATION*/
+    nav ul li{
+        width: 100%;
+    }
+
+    .logo{
+        display: flex;
+        background-color: #002244;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .logo label{
+        justify-content: flex-start;
+        line-height: 20px;
+        color:#B9D9EB;
+    }
+
+    .logo label a{
+        color:#B9D9EB;
+    }
+
+    .logo .icon{
+        justify-content: flex-end;
+        font-size: 50px;
+        color:#B9D9EB;
+        display: block;
+        line-height: 20px;
+        justify-content: center;
+    }
+
+    nav{ 
+        display: none;
+    }
+
+    .container-1,.container-2{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 769px){
+    /*NAVIGATION*/
+    nav ul li{
+        width: 100%;
+    }
+
+    .logo{
+        display: flex;
+        justify-content: space-around;
+        background-color: #002244;
+    }
+
+    .logo label{
+        justify-content: flex-start;
+        line-height: 20px;
+        color:#B9D9EB;
+    }
+
+    .logo label a{
+        color:#B9D9EB;
+        line-height: 40px;
+    }
+
+    .logo .icon{
+        justify-content: flex-end;
+        font-size: 50px;
+        color:#B9D9EB;
+        display: block;
+        line-height: 20px;
+    }
+
+    .container-1,.container-2,.container-3{
+        display: flex;
+        flex-direction: column;
+    }
+
+    /*FORM*/
+    .team{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .container-1 .gallery, .container-2 .video-1{
+        align-items: center; 
+        justify-content: center; 
+        flex-direction: column;
+        display: flex;
+        margin: 4px;
+        padding: 2px;   
+    }
+
+    .container-1 .gallery figure,.container-2 .video-1 figure{
+        width: 400px;
+    }
+
+    .gal, #vid,.author{
+        width: 400px; 
+        height: 250px; 
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+    }
+
+    .gallery .author{
+        width: 270px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        margin: 80px;
+    }
+
+    .container-3 .abouttheauthor,.container-3 .abouttheapp{
+        margin: 40px;
+        padding: 4px;
+        align-items: center;
+        text-align: center; 
+        justify-content: center; 
+        flex-direction: column;
+        display: flex;
+        font-size: 20px;
+        font-family: system-ui;
+    }
+}
+
+@media screen and (max-width: 480px){
+    /*NAVIGATION*/
+    nav ul li{
+        width: 100%;
+    }
+
+    .logo{
+        display: flex;
+        background-color: #002244;
+        align-items: center;
+    }
+
+    .logo label{
+        justify-content: flex-start;
+        line-height: 20px;
+        color:#B9D9EB;
+    }
+
+    .logo label a{
+        color:#B9D9EB;
+    }
+
+    .logo .icon{
+        justify-content: flex-end;
+        font-size: 50px;
+        color:#B9D9EB;
+        display: block;
+        line-height: 20px;
+        justify-content: center;
+    }
+
+    .container-1,.container-2{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container-3{
+        justify-content: space-between;
+        display:flex;
+    }
+
+    /*FORM*/
+    .team{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .container-1 .gallery, .container-2 .video-1{
+        align-items: center; 
+        justify-content: center; 
+        flex-direction: column;
+        display: flex;
+        margin: 4px;
+        padding: 2px;   
+    }
+
+    .container-1 .gallery figure,.container-2 .video-1 figure{
+        width: 250px;
+    }
+
+    .gal, #vid{
+        width: 250px; 
+        height: 200px; 
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+    }
+
+    .gallery .author{
+        width: 270px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        margin: 80px;
+    }
+
+    .container-3 .abouttheauthor,.container-3 .abouttheapp{
+        margin: 40px;
+        padding: 4px;
+        align-items: center;
+        text-align: center; 
+        justify-content: center; 
+        flex-direction: column;
+        display: flex;
+        font-size: 20px;
+        font-family: system-ui;
+    }
+}
